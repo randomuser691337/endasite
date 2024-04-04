@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enda's website</title>
+    <style>
+        .link {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            margin-right: 0px;
+            color: #777799;
+            font-family: 'PoppinsB', Arial;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .link:hover {
+            color: #606088;
+        }
+
+        .link:active {
+            color: #444466;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url(https://betawebdesk.vercel.app/assets/fonts/Poppins-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: 'PoppinsB';
+            src: url(https://betawebdesk.vercel.app/assets/fonts/Poppins-Bold.ttf);
+        }
+
+        @font-face {
+            font-family: 'PoppinsM';
+            src: url(https://betawebdesk.vercel.app/assets/fonts/Poppins-Medium.ttf);
+        }
+
+        body {
+            padding: 0;
+            font-size: 16px;
+            margin: 0;
+            font-family: 'Poppins', Arial;
+            font-size: var(--fz1);
+            color: var(--fontc);
+            text-align: center;
+            background-image: url('./endabg.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #1a1a1a;
+        }
+
+        #links {
+            position: fixed;
+            padding: 15px;
+            border-radius: 14px;
+            background-color: rgb(40, 40, 40, 0.4);
+            border: 2px solid rgb(30, 30, 30, 0.5);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            text-align: center;
+            max-width: 80%;
+            max-height: 80%;
+            width: 250px;
+            animation: links 0.62s;
+        }
+
+        @keyframes links {
+            0% {
+                transform: scale(0.3);
+                opacity: 0%;
+            }
+
+            32% {
+                transform: scale(0.3);
+                opacity: 0%;
+            }
+
+            100% {
+                transform: scale(1.0);
+                opacity: 100%;
+            }
+        }
+
+        .hide {
+            display: none;
+        }
+
+        p {
+            margin: 0px;
+            padding: 2px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body onresize="centerel('links');">
+    <div id="links">
+        <div id="main">
+            <p style="font-family: 'PoppinsB', Arial; font-size: 24px; padding: 1px;">Enda</p>
+            <p style="padding-top: 0px;">pula</p>
+            <a class="link" href="https://meower.xyz" target="_blank">made by randomuser</a>
+            <a class="link" onclick="fesw('main', 'files');">Android Stuff</a>
+            <a class="link" href="https://discord.gg/fd7ZFqYf2A" target="_blank">Discord</a>
+            <a class="link" href="https://www.youtube.com/channel/UCp1p7QFeHLurNx-FeDklrSA?sub_confirmation=1"
+                target="_blank">YouTube</a>
+            <a class="link" href="https://twitter.com/EnderDragon__" target="_blank">Twitter</a>
+            <a class="link" href="https://tiktok.com/@enderdragon_1" target="_blank">TikTok</a>
+            <a class="link" href="https://twitch.tv/enderdragon_live" target="_blank">Twitch</a>
+            <a class="link" href="https://instagram.com/ender.dragon_" target="_blank">Insta</a>
+        </div>
+        <div id="files" class="hide">
+            <p style="font-family: 'PoppinsB', Arial; font-size: 24px; padding: 1px;">Android Stuff</p>
+            <p style="padding-top: 0px;">Recoveries, roms, etc</p>
+            <a class="link"
+                href="https://drive.google.com/file/d/16vW5HagOdkp7t18Roi7jjaUy9ZEpGpmO/view?usp=drivesdk">A217F TWRP Port</a>
+            <a class="link" href="https://drive.google.com/file/d/1Et7C5wRPgF7J5Cr_ef-EG9Atpobs4gsI/view?usp=sharing">A21s OneUI 5.1 Port</a>
+            <a class="link" href="https://drive.google.com/file/d/153oBNMeXOtv3w_KLlXtzh1D87bt5pu0c/view?usp=sharing">A21s OneUI 6.0 Port</a>
+            <a class="link" onclick="fesw('files', 'main');">back</a>
+        </div>
+    </div>
+    <script>
+        centerel('links');
+        const links = document.querySelectorAll('.link');
+        function staggerLinks() {
+            setTimeout(function () {
+                links.forEach((link, index) => {
+                    setTimeout(() => {
+                        link.style.opacity = '0';
+                        link.style.transform = 'translateX(-100%)';
+                        link.style.opacity = '1';
+                        link.style.transform = 'translateX(0)';
+                    }, 100 * index);
+                });
+            }, 400)
+        }
+        function fesw(d1, d2) {
+            const dr1 = document.getElementById(d1);
+            const dr2 = document.getElementById(d2);
+            $(dr1).fadeOut(140, function () { $(dr2).fadeIn(140); });
+        }
+        window.onload = staggerLinks;
+        function centerel(el) {
+            const element = document.getElementById(el);
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const elementWidth = element.offsetWidth;
+            const elementHeight = element.offsetHeight;
+
+            const leftPosition = (screenWidth - elementWidth) / 2;
+            const topPosition = (screenHeight - elementHeight) / 2;
+
+            element.style.left = `${leftPosition}px`;
+            element.style.top = `${topPosition}px`;
+        }
+    </script>
+    <script src="https://betawebdesk.vercel.app/assets/lib/jq.js"></script>
+</body>
+
+</html>
